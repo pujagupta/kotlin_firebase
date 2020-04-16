@@ -1,14 +1,15 @@
-package com.example.my22application.kotlinpoc
+package com.example.my22application.kotlinpoc.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import com.example.my22application.kotlinpoc.R
 import com.example.my22application.kotlinpoc.adapter.MoviesAdapter
 import com.example.my22application.kotlinpoc.model.Movies
 import com.google.firebase.database.*
@@ -25,13 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        addButton = findViewById<View>(R.id.add_button) as ImageButton
         listViewItems = findViewById<View>(R.id.movies_list) as ListView
-        addButton.setOnClickListener { view ->
-            //Show Dialog here to add new Item
-            addNewItemDialog()
-        }
 
         mDatabase = FirebaseDatabase.getInstance().reference
         moviesList = mutableListOf<Movies>()
@@ -39,34 +34,15 @@ class MainActivity : AppCompatActivity() {
         listViewItems!!.setAdapter(movieAdapter)
         mDatabase.orderByKey().addListenerForSingleValueEvent(itemListener)
 
-    }
+        listViewItems!!.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                var item = parent.getItemAtPosition(position)
+                var items = item as Movies
+                val id = items.movieId;
+                //pass this id to detail page through intent
 
-    private fun addNewItemDialog() {
-        val builder = AlertDialog.Builder(this)
-        val inflater = layoutInflater
-        builder.setTitle("With EditText")
-        val dialogLayout = inflater.inflate(R.layout.add_movie_dialog, null)
-        movieNameText = dialogLayout.findViewById<EditText>(R.id.movie_name)
-        genreText = dialogLayout.findViewById<EditText>(R.id.genre)
-        builder.setView(dialogLayout)
-        builder.setPositiveButton("OK") { dialogInterface, i ->
-            addMovies();
-        }
-        builder.show()
-    }
+            }
 
-    private fun addMovies() {
-        val movies = Movies.create()
-        movies.movieName = movieNameText.text.toString()
-        movies.movieGenre = genreText.text.toString()
-        //We first make a push so that a new item is made with a unique ID
-        val newItem = mDatabase.child(Constants.FIREBASE_ITEM).push()
-        movies.movieId = newItem.key
-        //then, we used the reference to set the value on that ID
-        newItem.setValue(movies)
-        Toast.makeText(this, "Movie Saved", Toast.LENGTH_SHORT).show()
-        moviesList?.clear();
-        mDatabase.orderByKey().addListenerForSingleValueEvent(itemListener)
     }
 
     var itemListener: ValueEventListener = object : ValueEventListener {
