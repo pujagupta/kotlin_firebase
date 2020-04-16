@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1016684712172",
+    "firebase_url": "https://kotlin-poc-a5700.firebaseio.com",
+    "project_id": "kotlin-poc-a5700",
+    "storage_bucket": "kotlin-poc-a5700.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016684712172:android:cd9c84f6844d0ee88795c9",
+        "android_client_info": {
+          "package_name": "com.example.my22application.kotlinpoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016684712172-rbfq8ti1vns7vq16c2ffo8qlamitood4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSo5xUpObCqvKIRRPhZWZm9iNXAygGE7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016684712172-rbfq8ti1vns7vq16c2ffo8qlamitood4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
