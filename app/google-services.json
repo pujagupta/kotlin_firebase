@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "1016684712172",
-    "firebase_url": "https://kotlin-poc-a5700.firebaseio.com",
-    "project_id": "kotlin-poc-a5700",
-    "storage_bucket": "kotlin-poc-a5700.appspot.com"
+    "project_number": "535509720384",
+    "firebase_url": "https://kotlin-poc-34a92.firebaseio.com",
+    "project_id": "kotlin-poc-34a92",
+    "storage_bucket": "kotlin-poc-34a92.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1016684712172:android:cd9c84f6844d0ee88795c9",
+        "mobilesdk_app_id": "1:535509720384:android:fd2950260950fe4fde6ea5",
         "android_client_info": {
           "package_name": "com.example.my22application.kotlinpoc"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1016684712172-rbfq8ti1vns7vq16c2ffo8qlamitood4.apps.googleusercontent.com",
+          "client_id": "535509720384-asuqr318t3u0tu0s5eho52k89gt562ou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my22application.kotlinpoc",
+            "certificate_hash": "2904711fc428bc4acfcaa98075a90193da5e2411"
+          }
+        },
+        {
+          "client_id": "535509720384-vrg9lik96ebqb12vm1u28dpge7c7md4r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDSo5xUpObCqvKIRRPhZWZm9iNXAygGE7s"
+          "current_key": "AIzaSyCY-VbmQ3BTYN7wLr9azHbWx4xN2tz1yJ0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1016684712172-rbfq8ti1vns7vq16c2ffo8qlamitood4.apps.googleusercontent.com",
+              "client_id": "535509720384-vrg9lik96ebqb12vm1u28dpge7c7md4r.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -7,7 +7,7 @@ class Movies {
     var movieId: String? = null
     var movieName: String? = null
     var movieGenre: String? = null
-    var movieImage: String? = null
-    var movieYear: String? = null
-    var movieDirector: String? = null
+    var image: String? = null
+    var year: Long? = null
+    var Director: String? = null
 }

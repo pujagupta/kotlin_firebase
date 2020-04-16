@@ -40,7 +40,9 @@ class MainActivity : AppCompatActivity() {
                 var items = item as Movies
                 val id = items.movieId;
                 //pass this id to detail page through intent
-
+                val intent = Intent(this , DetailPageActivity :: class.java)
+                intent.putExtra("Id",id);
+                startActivity(intent)
             }
 
     }
