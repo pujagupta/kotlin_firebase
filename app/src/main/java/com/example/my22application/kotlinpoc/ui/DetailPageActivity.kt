@@ -45,7 +45,7 @@ class DetailPageActivity : AppCompatActivity() {
                     movieNameTextView.text = data.movieName.toString()
                     movieYearTextView.text = data.year.toString()
                     movieGenreTextView.text = data.movieGenre.toString()
-                    movieDirectorTextView.text = data.Director.toString()
+                    movieDirectorTextView.text = data.movieDirector.toString()
                     movieImageWebView.webViewClient = object : WebViewClient() {
                         override fun shouldOverrideUrlLoading(
                             view: WebView?,

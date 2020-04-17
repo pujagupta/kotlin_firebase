@@ -5,28 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ListView
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.example.my22application.kotlinpoc.R
 import com.example.my22application.kotlinpoc.adapter.MoviesAdapter
 import com.example.my22application.kotlinpoc.model.Movies
 import com.google.firebase.database.*
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var addButton: ImageButton
-    private lateinit var movieNameText: EditText
-    private lateinit var genreText: EditText
+class ListActivity : AppCompatActivity() {
     lateinit var mDatabase: DatabaseReference
     var moviesList: MutableList<Movies>? = null
     lateinit var movieAdapter: MoviesAdapter
     private var listViewItems: ListView? = null
+    private var logoutIcon: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_list)
         listViewItems = findViewById<View>(R.id.movies_list) as ListView
+        logoutIcon = findViewById<View>(R.id.logout_icon) as ImageView
 
         mDatabase = FirebaseDatabase.getInstance().reference
         moviesList = mutableListOf<Movies>()
@@ -36,15 +33,39 @@ class MainActivity : AppCompatActivity() {
 
         listViewItems!!.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
-                var item = parent.getItemAtPosition(position)
-                var items = item as Movies
-                val id = items.movieId;
-                //pass this id to detail page through intent
-                val intent = Intent(this , DetailPageActivity :: class.java)
-                intent.putExtra("Id",id);
-                startActivity(intent)
+                navigateToDetailActivity(parent, position)
             }
 
+        logoutIcon!!.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage(R.string.logoutMessage)
+
+            //performing positive action
+            builder.setPositiveButton("Yes"){dialogInterface, which ->
+                val intent = Intent(applicationContext, LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finish()
+            }
+            //performing negative action
+            builder.setNegativeButton("No"){dialogInterface, which ->
+                //Toast.makeText(applicationContext,"clicked No",Toast.LENGTH_LONG).show()
+            }
+            // Create the AlertDialog
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+        }
+    }
+
+    private fun navigateToDetailActivity(parent: AdapterView<*>?, position: Int) {
+        var item = parent?.getItemAtPosition(position)
+        var items = item as Movies
+        val id = items.movieId;
+        //pass this id to detail page through intent
+        val intent = Intent(this , DetailPageActivity :: class.java)
+        intent.putExtra("Id",id);
+        startActivity(intent)
     }
 
     var itemListener: ValueEventListener = object : ValueEventListener {
@@ -55,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onCancelled(databaseError: DatabaseError) {
             // Getting Item failed, log a message
-            Log.w("MainActivity", "loadItem:onCancelled", databaseError.toException())
+            Log.w("ListActivity", "loadItem:onCancelled", databaseError.toException())
         }
     }
 

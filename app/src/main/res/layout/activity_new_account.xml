@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/Createnewaccount"
+        style="@style/textview"
+        android:text="Create New Account"
+        android:layout_marginBottom="50dp"/>
+
+    <EditText
+        android:id="@+id/emailId"
+        style="@style/viewCustom"
+        android:ems="10"
+        android:layout_below="@id/Createnewaccount"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+    <EditText
+        android:id="@+id/password"
+        style="@style/viewCustom"
+        android:layout_below="@id/emailId"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+    <Button
+        android:id="@+id/btn_register"
+        style="@style/viewCustom"
+        android:layout_below="@id/password"
+        android:background="@color/colorPrimary"
+        android:text="@string/create_act"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+</RelativeLayout>

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Kotlin POC</string>
+    <string name="email">Email</string>
+    <string name="password">Password must be of 6 digits or more</string>
+    <string name="login_title">Login</string>
+    <string name="create_act">Create Account</string>
+    <string name="etEmail">Email</string>
+    <string name="etPassword">Password</string>
+    <string name="send_password_reset_email">Send password reset mail</string>
+    <string name="logoutMessage">Are you you want to exit the app?</string>
+    <string name="year_text">Year : </string>
+    <string name="genre_text">Genre : </string>
+    <string name="director_text">Director : </string>
 </resources>

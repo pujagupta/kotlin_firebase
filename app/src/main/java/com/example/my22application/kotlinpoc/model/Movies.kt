@@ -9,5 +9,5 @@ class Movies {
     var movieGenre: String? = null
     var image: String? = null
     var year: Long? = null
-    var Director: String? = null
+    var movieDirector: String? = null
 }
